@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    .cat{
+        margin:50px auto;
+        width:500px;
+    }
+    *{
+        list-style: none;
+        margin:0;
+        padding:0;
+    }
+   /*头部*/
+    .head{
+        height:300px;
+        width:320px;
+        border:2px solid #555;
+        background:-webkit-radial-gradient(right top,#fff 10%,#0ebcf1 40%,#067c9a 75%,#0c708a);
+        background:-ms-radial-gradient(right top,#fff 10%,#0ebcf1 40%,#067c9a 75%,#0c708a);
+        background:-moz-radial-gradient(right top,#fff 10%,#0ebcf1 40%,#067c9a 75%,#0c708a);
+        background:radial-gradient(right top,#fff 10%,#0ebcf1 40%,#067c9a 75%,#0c708a);
+        border-radius: 150px;
+        position: relative;
+    }
+    .tou{
+        position: absolute;
+        left:25px;
+        top:75px;
+        width:265px;
+        height:195px;
+        border:2px solid #555;
+        background:-webkit-radial-gradient(right top,#fff 75%,#eee 80%,#999 90%,#444);
+        background:-ma-radial-gradient(right top,#fff 75%,#eee 80%,#999 90%,#444);
+        background:-moz-radial-gradient(right top,#fff 75%,#eee 80%,#999 90%,#444);
+        background:radial-gradient(right top,#fff 75%,#eee 80%,#999 90%,#444);
+        border-radius: 150px;
+        z-index:2;
+    }
+    .eyes{
+        position: absolute;
+        left:80px;
+        top:31px;
+        z-index: 20;
+    }
+    .eyes ol li{
+        float: left;
+        width:72px;
+        height:82px;
+        border:2px solid #000;
+        border-radius: 35px 35px;
+        background: #fff;
+        position: relative;
+    }
+    .eye_left{
+        position: absolute;
+        left:35px;
+        top:40px;
+        height:15px;
+        width:15px;
+        border-radius: 50%;
+        background: #000;
+    }
+    .eye_right{
+        position: absolute;
+        right:35px;
+        top:40px;
+        height:15px;
+        width:15px;
+        border-radius: 50%;
+        background: #000;
+    }
+    .nose{
+        height:30px;
+        width:30px;
+        border:2px solid #000;
+        background: #cc3403;
+        position: absolute;
+        left:112px;
+        top:23px;
+        border-radius: 40%;
+    }
+    .nose_c{
+        width:10px;
+        height:10px;
+        border-radius: 5px;
+        box-shadow: 19px 8px 5px #fff;
+    }
+    .line1{
+        width:3px;
+        height:100px;
+        background: #333;
+        position: absolute;
+        top: 56px;
+        left: 128px;
+        z-index: 3;
+    }
+    .line2{
+        width:220px;
+        height:400px;
+        border-bottom: 3px solid #333;
+        border-radius: 120px;
+        position: absolute;
+        top: -244px;
+        left: 20px;
+    }
+    .bread{
+        position: absolute;
+        left: 20px;
+        top: 57px;
+        height: 70px;
+        width: 230px;
+        background: #fff;
+    }
+    .bread_left{
+        margin-right: 75px;
+        margin-left: 15px;
+    }
+    .bread_left,.bread_right{
+        float: left;
+    }
+    .bread_left ol li{
+        width: 60px;
+        height: 2px;
+        background: #333;
+        z-index: 20;
+        margin-bottom:20px;
+    }
+    .bread_right ol li{
+        width: 60px;
+        height: 2px;
+        background: #333;
+        z-index: 20;
+        margin-bottom:20px;
+    }
+    .bian{
+        transform-origin: left top;
+        transform: rotate(10deg);
+    }
+    .bread_right .bian{
+        transform-origin: right top;
+        transform: rotate(-10deg);
+    }
+    .hua{
+        transform-origin: right top;
+        transform: rotate(-10deg);
+    }
+    .bread_right .hua{
+        transform-origin: left top;
+        transform: rotate(10deg);
+    }
+    .wei {
+        width: 230px;
+        height: 20px;
+        background: #c40;
+        background: -webkit-gradient(linear,left top,left bottom,from(#c40),to(#800400));
+        background: -moz-linear-gradient(center top,#c40,#800400);
+        background: -ms-linear-gradient(center top,#c40,#800400);
+        border: 2px solid #000;
+        border-radius: 10px;
+        position: relative;
+        top: -40px;
+        left: 45px;
+        z-index: 4;
+    }
+    .wei .bell {
+        width: 40px;
+        height: 40px;
+        _overflow: hidden; /*IE6 hack*/
+        border: 2px solid #000;
+        border-radius: 50px;
+        background: #f9f12a;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f9f12a),color-stop(0.5, #e9e11a), to(#a9a100));
+        background: -moz-linear-gradient(top, #f9f12a, #e9e11a 75%,#a9a100);
+        background: -ms-linear-gradient(top, #f9f12a, #e9e11a 75%,#a9a100);
+        box-shadow: -5px 5px 10px rgba(0,0,0,0.25);
+        position: absolute;
+        top: 5px;
+        left: 90px;
+    }
+    .wei .bell_line {
+        width: 36px;
+        height: 2px;
+        background: #f9f12a;
+        border: 2px solid #333;
+        border-radius: 3px 3px 0 0;
+        position: absolute;
+        top: 10px;
+    }
+    .wei .bell_circle{
+        width:12px;
+        height:10px;
+        background:#000;
+        border-radius:5px;
+        position:absolute;
+        top:20px;
+        left:14px;
+    }
+    .wei .bell_under{
+        width: 3px;
+        height:15px;
+        background:#000;
+        position:absolute;
+        left: 18px;
+        top:27px;
+    }
+    .wei .bell_light{
+        width:12px;
+        height:12px;
+        border-radius:10px;
+        box-shadow:19px 8px 5px #fff;
+        position:absolute;
+        top:-5px;
+        left:5px;
+        opacity:0.7;
+    }
+    .bodys {
+        position: relative;
+        top: -310px;
+    }
+    .bodys .body {
+        width: 220px;
+        height: 165px;
+        background: #07beea;
+        background: -webkit-gradient(linear,right top,left top,from(#07beea),color-stop(0.5, #0073b3),color-stop(0.75,#00b0e0), to(#0096be));
+        background: -moz-linear-gradient(right center,#07beea,#0073b3 50%,#00b0e0 75%,#0096be 100%);
+        background: -ms-linear-gradient(right center,#07beea,#0073b3 50%,#00b0e0 75%,#0096be 100%);
+        border:2px solid #333;
+        position:absolute;
+        top:265px;
+        left:50px;
+    }
+    .bodys .wraps {
+        width: 170px;
+        height: 170px;
+        background: #fff;
+        background: -webkit-gradient(linear, right top, left bottom, from(#fff),color-stop(0.75,#fff),color-stop(0.83,#eee),color-stop(0.90,#999),color-stop(0.95,#444), to(#000));
+        background: -moz-linear-gradient(right top,#fff,#fff 75%,#eee 83%,#999 90%,#444 95%,#000);
+        background: -ms-linear-gradient(right top,#fff,#fff 75%,#eee 83%,#999 90%,#444 95%,#000);
+        border: 2px solid #000;
+        border-radius: 85px;
+        position: absolute;
+        left: 72px;
+        top: 230px;
+    }
+    .bodys .pocket {
+        width: 130px;
+        height: 130px;
+        border-radius: 65px;
+        background: #fff;
+        background: -webkit-gradient(linear, right top, left bottom, from(#fff),color-stop(0.70,#fff),color-stop(0.75,#f8f8f8),color-stop(0.80,#eee),color-stop(0.88,#ddd), to(#fff));
+        background: -moz-linear-gradient(right top, #fff, #fff 70%,#f8f8f8 75%,#eee 80%,#ddd 88%, #fff);
+        background: -ms-linear-gradient(right top, #fff, #fff 70%,#f8f8f8 75%,#eee 80%,#ddd 88%, #fff);
+        border: 2px solid #000;
+        position:absolute;
+        top: 250px;
+        left: 92px;
+    }
+    .bodys .pocket_mask {
+        width: 134px;
+        height: 60px;
+        background:#fff;
+        border-bottom: 2px solid #000;
+        position:absolute;
+        top: 259px;
+        left: 92px;
+    }
+    .hand_right,.hand_left {
+        height: 100px;
+        width: 100px;
+        position: absolute;
+        top: 320px;
+        left: 678px;
+    }
+    /*左手*/
+    .hand_left {
+        left: 422px;
+    }
+    .arm {
+        width:80px;
+        height:50px;
+        background: #07beea;
+        background: -webkit-gradient(linear, left top, left bottom, from(#07beea),color-stop(0.85,#07beea), to(#555));
+        border: 1px solid #000000;
+        z-index: -1;
+        position: relative;
+    }
+    .hand_right .arm {
+        top: 17px;
+        -webkit-transform: rotate(35deg);
+        -moz-transform: rotate(35deg);
+        -ms-transform: rotate(35deg);
+        -o-transform: rotate(35deg);
+        transform: rotate(35deg);
+    }
+    .hand_left .arm {
+        top: 17px;
+        background: #0096be;
+        -webkit-transform: rotate(145deg);
+        -moz-transform: rotate(145deg);
+        -ms-transform: rotate(145deg);
+        -o-transform: rotate(145deg);
+        transform: rotate(145deg);
+    }
+    .circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        border: 2px solid #000;
+        background: #fff;
+        background: -webkit-gradient(linear, right top, left bottom, from(#fff),color-stop(0.5,#fff),color-stop(0.70,#eee),color-stop(0.8,#ddd), to(#999));
+        background: -moz-linear-gradient(right top, #fff, #fff 50%, #eee 70%, #ddd 80%,#999);
+        background: -ms-linear-gradient(right top, #fff, #fff 50%, #eee 70%, #ddd 80%,#999);
+        position: absolute;
+    }
+    .hand_right .circle {
+        left: 40px;
+        top: 32px;
+    }
+    .hand_left .circle {
+        left: -20px;
+        top: 32px;
+    }
+    .arm_center {
+        height: 45px;
+        width: 5px;
+        background: #07beea;
+        position: relative;
+    }
+    .hand_right .arm_center {
+        top: -45px;
+        left: 22px;
+    }
+    .hand_left .arm_center {
+        top: -45px;
+        left: 60px;
+        background: #0096be;
+    }
+    .foot {
+        width: 280px;
+        height: 40px;
+        position: relative;
+        top: 55px;
+        left: 20px;
+    }
+    .foot_left,.foot_right {
+        width: 125px;
+        height: 30px;
+        background: #fff;
+        background: -webkit-gradient(linear, right top, left bottom, from(#fff),color-stop(0.75,#fff),color-stop(0.85,#eee), to(#999));
+        background: -moz-linear-gradient(right top, #fff, #fff 75%, #eee 85%, #999);
+        background: -ms-linear-gradient(right top, #fff, #fff 75%, #eee 85%, #999);
+        border: 2px solid #333;
+        border-radius: 80px 60px 60px 40px;
+        position: relative;
+    }
+    .foot_left {
+        left: 8px;
+        top: 65px;
+    }
+
+    .foot_right {
+        top: 31px;
+        left: 141px;
+    }
+    .foot_center {
+        width: 20px;
+        height: 10px;
+        background: #fff;
+        background: -webkit-gradient(linear, right top, left bottom, from(#666),color-stop(0.83,#fff), to(#fff));
+        background: -moz-linear-gradient(right top, #666, #fff 83%, #fff);
+        background: -ms-linear-gradient(right top, #666, #fff 83%, #fff);
+        border: 2px solid #000;
+        border-bottom: none;
+        border-radius: 40px 40px 0 0;
+        position: relative;
+        top: -11px;
+        left: 130px;
+        _left: 127px;
+    }
+</style>
+<body>
+<div class="cat">
+    <div class="head">
+        <div class="eyes">
+            <ol>
+                <li>
+                    <div class="eye_left"></div>
+                </li>
+                <li>
+                    <div class="eye_right"></div>
+                </li>
+            </ol>
+        </div>
+        <div class="tou">
+            <div class="nose">
+                <div class="nose_c"></div>
+            </div>
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="bread">
+                <div class="bread_left">
+                    <ol>
+                        <li class="bian"></li>
+                        <li></li>
+                        <li class="hua"></li>
+                    </ol>
+                </div>
+                <div class="bread_right">
+                    <ol>
+                        <li class="bian"></li>
+                        <li></li>
+                        <li class="hua"></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wei">
+        <div class="bell">
+            <div class="bell_line"></div>
+            <div class="bell_circle"></div>
+            <div class="bell_under"></div>
+            <div class="bell_light"></div>
+        </div>
+    </div>
+    <!--身体-->
+    <div class="bodys">
+        <div class="body"></div>
+        <div class="wraps"></div>
+        <div class="pocket"></div>
+        <div class="pocket_mask"></div>
+    </div>
+    <!--右手-->
+    <div class="hand_right">
+        <div class="arm"></div>
+        <div class="circle"></div>
+        <div class="arm_rewrite"></div>
+    </div>
+    <div class="hand_left">
+        <div class="arm"></div>
+        <div class="circle"></div>
+        <div class="arm_center"></div>
+    </div>
+    <div class="foot">
+        <div class="foot_left"></div>
+        <div class="foot_right"></div>
+        <div class="foot_center"></div>
+    </div>
+</div>
+</body>
+</html>
